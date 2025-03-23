@@ -1,0 +1,483 @@
+/* =======================================
+   Global Styles & Color Palette
+   Primary: Dodger Blue (#1E90FF)
+   Secondary: White (#FFFFFF)
+   Neutral: Light Gray (#f4f4f4) and Dark Gray (#333333)
+========================================== */
+body {
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f4; /* Neutral light gray background */
+  color: #333333; /* Dark gray for readability */
+  font-family: Arial, sans-serif;
+}
+
+/* =======================================
+     Header, Navigation & Footer
+  ========================================== */
+/* Header Styles */
+header {
+  background-color: #1c75d8; /* Slightly darker blue */
+  padding: 15px 20px;
+  text-align: center;
+  color: #eaf4ff; /* Softer white for text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Header Title (shortened for mobile) */
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Navigation Menu (if used) */
+nav {
+  margin-top: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #1c75d8; /* Match header color */
+  padding: 10px;
+  text-align: center;
+  color: #eaf4ff; /* Softer white for text */
+}
+
+/* =======================================
+     Authentication & Card Components
+  ========================================== */
+/* Authentication Container */
+.auth-container {
+  max-width: 350px;
+  width: 100%;
+  background-color: #ffffff; /* White for clarity */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: auto;
+}
+
+/* Glass-Card & General Card Styling */
+.glass-card {
+  padding: 2rem;
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.9); /* Subtle glass effect */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Comment Card Styling */
+.comment-card {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.comment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Chart Container */
+.chart-container {
+  position: relative;
+  height: 400px;
+}
+
+/* Spinner Styling */
+#loading-spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 4px solid #1e90ff;
+  border-top: 4px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Recommendation Card Styling */
+.recommendation-card {
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: #eaf4ff; /* Light blue for positive recommendation */
+  border-left: 5px solid #1c75d8; /* Match header/footer color */
+}
+
+/* =======================================
+     Hero, Features, Benefits, Testimonials
+  ========================================== */
+/* Hero Section */
+.hero {
+  background: linear-gradient(
+    to right,
+    #1c75d8,
+    #1e90ff
+  ); /* Monochromatic gradient */
+  color: #ffffff;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+/* Sections: Features, Benefits, Testimonials */
+.features,
+.benefits,
+.testimonials {
+  padding: 4rem 2rem;
+}
+
+.features {
+  background-color: #f0f8ff; /* Very light blue */
+}
+
+.benefits {
+  background-color: #eaf4ff; /* Light blue */
+}
+
+.testimonials {
+  background-color: #e3f2fd; /* Light blue for a cohesive look */
+}
+
+/* Cards within Sections */
+.feature-card,
+.testimonial-card {
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.testimonial-card {
+  border-left: 5px solid #1565c0; /* Darker blue for contrast */
+}
+
+.feature-card:hover,
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* =======================================
+     Call-to-Action Buttons
+  ========================================== */
+.cta-btn {
+  background-color: #1c86ee; /* Softer blue */
+  color: #ffffff;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  border-radius: 5px;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-btn:hover {
+  background-color: #1565c0; /* Slightly darker shade on hover */
+}
+
+/* =======================================
+     Sentiment Badges
+  ========================================== */
+.sentiment-badge {
+  font-size: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  text-transform: capitalize;
+}
+
+.very-negative {
+  background-color: #d32f2f;
+  color: #ffffff;
+}
+
+.negative {
+  background-color: #f44336;
+  color: #ffffff;
+}
+
+.neutral {
+  background-color: #90a4ae;
+  color: #ffffff;
+}
+
+.positive {
+  background-color: #4caf50;
+  color: #ffffff;
+}
+
+.very-positive {
+  background-color: #2e7d32;
+  color: #ffffff;
+}
+
+/* =======================================
+     Typewriter & Animations
+  ========================================== */
+.typewriter span {
+  display: inline-block;
+  border-right: 2px solid #1e90ff;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 4s steps(40, end), blink 0.5s step-end infinite;
+  max-width: 15ch; /* Limit text length to 15 characters */
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* Fade-in Animation */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade-in-Up Animation */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =======================================
+     RESPONSIVE ADJUSTMENTS
+  ========================================== */
+@media (max-width: 768px) {
+  body {
+    padding: 10px 5px; /* Reduce left and right padding */
+  }
+
+  header {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  header h1 {
+    font-size: 1.5rem; /* Slightly smaller header title */
+    margin-bottom: 5px;
+  }
+
+  .cta-btn {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .hero {
+    padding: 2rem 0.5rem; /* Adjust padding for hero section */
+  }
+
+  .features,
+  .benefits,
+  .testimonials {
+    padding: 2rem 0.5rem; /* Reduce horizontal padding */
+  }
+
+  .chart-container {
+    height: 300px;
+  }
+
+  .features .feature-card,
+  .testimonials .testimonial-card {
+    padding: 0.8rem; /* Reduce padding for smaller screens */
+  }
+
+  .recommendation-card {
+    padding: 1rem; /* Adjust padding for better fit */
+  }
+
+  .comment-card {
+    padding: 0.8rem; /* Reduce padding for compact layout */
+  }
+
+  .glass-card {
+    padding: 1.5rem; /* Adjust padding for smaller screens */
+  }
+}
+
+@media (max-width: 1200px) {
+  .features .feature-card,
+  .testimonials .testimonial-card {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero {
+    padding: 3rem 1.5rem;
+  }
+
+  .auth-container {
+    padding: 1.5rem;
+  }
+
+  .chart-container {
+    height: 350px;
+  }
+}
+
+@media (max-width: 992px) {
+  .features .row,
+  .testimonials .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .features .feature-card,
+  .testimonials .testimonial-card {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .cta-btn {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .auth-container {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    padding: 5px; /* Minimal padding for very small screens */
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 0.8rem;
+  }
+
+  .cta-btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .features .feature-card,
+  .testimonials .testimonial-card {
+    padding: 1rem;
+  }
+
+  .auth-container {
+    padding: 0.8rem;
+  }
+
+  .chart-container {
+    height: 250px;
+  }
+
+  nav ul li {
+    display: block; /* Stack navigation items vertically */
+    margin: 5px 0;
+  }
+
+  .hero {
+    padding: 1.5rem 0.5rem; /* Compact padding for hero section */
+  }
+
+  .auth-container,
+  .features,
+  .benefits,
+  .testimonials {
+    padding: 1rem 0.5rem; /* Further reduce horizontal padding */
+  }
+
+  .hero h1 {
+    font-size: 1.2rem; /* Further reduce font size */
+  }
+
+  .hero p {
+    font-size: 0.7rem; /* Adjust paragraph font size */
+  }
+
+  .features .feature-card,
+  .testimonials .testimonial-card {
+    padding: 0.6rem; /* Compact padding for very small screens */
+  }
+
+  .recommendation-card {
+    padding: 0.8rem; /* Further reduce padding */
+  }
+
+  .auth-container {
+    padding: 0.6rem; /* Compact padding for authentication container */
+  }
+
+  .chart-container {
+    height: 200px; /* Reduce chart height for smaller screens */
+  }
+}

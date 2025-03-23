@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Business Insights from Facebook</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header with Logout -->
+    <header
+      class="d-flex justify-content-between align-items-center p-3 bg-dark text-white"
+    >
+      <h1>Business Insights Tool</h1>
+      <button id="logoutBtn" class="btn btn-outline-light">Sign Out</button>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <h1 class="typewriter"><span>Discover Insights </span></h1>
+      <p class="lead fade-in">
+        Transform Facebook comments into actionable business insights with
+        real-time AI-powered analysis.
+      </p>
+      <a href="#analysisForm" class="cta-btn fade-in">Start Analyzing Now</a>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features container">
+      <h2 class="text-center mb-4">Why Choose Our Tool?</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="feature-card">
+            <h4>Real-Time Analysis</h4>
+            <p>
+              Get instant insights from Facebook comments to make timely
+              decisions.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <h4>AI-Powered Insights</h4>
+            <p>
+              Leverage advanced AI algorithms to understand customer sentiment.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <h4>Seamless Integration</h4>
+            <p>
+              Easily connect with Facebook to analyze comments effortlessly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <div class="benefits bg-light py-5">
+      <div class="container">
+        <h2 class="text-center mb-4">How It Helps Your Business</h2>
+        <ul class="list-unstyled">
+          <li class="mb-3">
+            ✅ Enhance customer experience by addressing feedback promptly.
+          </li>
+          <li class="mb-3">
+            ✅ Optimize marketing strategies with data-driven insights.
+          </li>
+          <li class="mb-3">✅ Protect and improve your brand reputation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="testimonials container py-5">
+      <h2 class="text-center mb-4">What Our Users Say</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="testimonial-card">
+            <p>
+              "This tool has completely transformed how we approach customer
+              feedback. Highly recommend!"
+            </p>
+            <p><strong>- Sarah T., Marketing Manager</strong></p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="testimonial-card">
+            <p>
+              "The insights we gained helped us improve our campaigns and boost
+              engagement."
+            </p>
+            <p><strong>- John D., Social Media Strategist</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analysis Form Section -->
+    <div class="container py-5">
+      <div class="card shadow-lg">
+        <div class="card-body">
+          <h1 class="text-center mb-4">Facebook Sentiment Analysis</h1>
+          <form id="analysisForm" class="mb-4">
+            <div class="mb-3">
+              <input
+                type="url"
+                class="form-control form-control-lg"
+                id="facebook_link"
+                placeholder="Enter Facebook post URL"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg w-100">
+              Analyze Comments
+            </button>
+          </form>
+          <div
+            id="error-message"
+            class="alert alert-danger"
+            style="display: none"
+          ></div>
+          <div id="loading" class="text-center" style="display: none">
+            <div
+              class="spinner-border text-primary"
+              style="width: 3rem; height: 3rem"
+            ></div>
+            <div class="progress mt-3" style="height: 20px">
+              <div class="progress-bar" style="width: 0%"></div>
+            </div>
+          </div>
+          <div id="results" style="display: none">
+            <div class="row mt-4">
+              <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h4 class="card-title">Comments Analysis</h4>
+                    <div
+                      id="commentsList"
+                      style="max-height: 500px; overflow-y: auto"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h4 class="card-title">Sentiment Distribution</h4>
+                    <div class="chart-container">
+                      <canvas id="sentimentChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card mt-4">
+              <div class="card-body">
+                <h4 class="card-title">Recommendations</h4>
+                <ul id="recommendationsList" class="list-group"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white text-center py-3 mt-5 fade-in-up">
+      <p class="mb-0">© 2025 Sentiment Analysis Tool. All rights reserved.</p>
+      <p class="mb-0">Empowering businesses with actionable insights.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      let chartInstance = null;
+
+      document
+        .getElementById("analysisForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const resultsDiv = document.getElementById("results");
+          const loadingDiv = document.getElementById("loading");
+          const errorDiv = document.getElementById("error-message");
+
+          // Reset UI
+          errorDiv.style.display = "none";
+          resultsDiv.style.display = "none";
+          loadingDiv.style.display = "block";
+          const progressBar = loadingDiv.querySelector(".progress-bar");
+          progressBar.style.width = "0%";
+
+          try {
+            // Simulate progress
+            let progress = 0;
+            const interval = setInterval(() => {
+              progress = Math.min(progress + 10, 90);
+              progressBar.style.width = `${progress}%`;
+            }, 500);
+
+            // Send analysis request (token included in header)
+            const token = localStorage.getItem("token");
+            const response = await fetch("/analyze", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: token ? "Bearer " + token : "",
+              },
+              body: JSON.stringify({
+                facebook_link: document.getElementById("facebook_link").value,
+              }),
+            });
+
+            clearInterval(interval);
+            progressBar.style.width = "100%";
+
+            if (!response.ok) throw new Error(await response.text());
+            const data = await response.json();
+            updateUI(data);
+            resultsDiv.style.display = "block";
+          } catch (error) {
+            errorDiv.textContent = error.message;
+            errorDiv.style.display = "block";
+          } finally {
+            loadingDiv.style.display = "none";
+          }
+        });
+
+      function updateUI(data) {
+        updateComments(data.details);
+        updateChart(data.sentiments);
+        updateRecommendations(data.recommendations);
+      }
+
+      function updateComments(comments) {
+        const container = document.getElementById("commentsList");
+        container.innerHTML = comments
+          .map(
+            (comment) => `
+            <div class="card comment-card mb-3">
+              <div class="card-body">
+                <p class="card-text">${comment.text}</p>
+                <span class="sentiment-badge ${getSentimentClass(
+                  comment.sentiment
+                )}">
+                  ${comment.sentiment || "Neutral"}
+                </span>
+              </div>
+            </div>
+          `
+          )
+          .join("");
+      }
+
+      function getSentimentClass(sentiment) {
+        const safeSentiment = (sentiment || "neutral")
+          .toLowerCase()
+          .replace(" ", "-");
+        return safeSentiment.startsWith("very-")
+          ? `very-${safeSentiment.split("-")[1]}`
+          : safeSentiment;
+      }
+
+      function updateChart(sentimentData) {
+        const ctx = document.getElementById("sentimentChart").getContext("2d");
+        if (chartInstance) chartInstance.destroy();
+        chartInstance = new Chart(ctx, {
+          type: "doughnut",
+          data: {
+            labels: Object.keys(sentimentData),
+            datasets: [
+              {
+                data: Object.values(sentimentData),
+                backgroundColor: [
+                  "#dc3545",
+                  "#ffa726",
+                  "#17a2b8",
+                  "#28a745",
+                  "#006400",
+                ],
+                borderWidth: 2,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { position: "bottom" },
+              tooltip: { bodyFont: { size: 14 } },
+            },
+          },
+        });
+      }
+
+      function updateRecommendations(recommendations) {
+        const list = document.getElementById("recommendationsList");
+        list.innerHTML = recommendations
+          .map(
+            (r) => `
+            <li class="list-group-item d-flex align-items-start">
+              <div class="me-2">✅</div>
+              <div>
+                <strong>${r.priority}:</strong> ${r.message}
+              </div>
+            </li>
+          `
+          )
+          .join("");
+      }
+
+      // Logout button logic
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        localStorage.removeItem("token");
+        window.location.href = "/login.html";
+      });
+
+      // On load, if no token, redirect to login page
+      if (!localStorage.getItem("token")) {
+        window.location.href = "/login.html";
+      }
+    </script>
+  </body>
+</html>
