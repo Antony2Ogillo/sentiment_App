@@ -30,7 +30,7 @@ const resetTokens = {};
 // Middleware
 app.use(
   cors({
-    origin: "http://localhost:3000", // Adjust to your frontend URL
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
@@ -131,7 +131,7 @@ app.get("/health", (req, res) => {
 // Facebook Comments Extraction & Sentiment Analysis
 const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY;
 const RAPIDAPI_HOST = "facebook-scraper-api4.p.rapidapi.com";
-const MAX_COMMENTS = 10;
+const MAX_COMMENTS = 75;
 
 class FacebookCommentExtractor {
   constructor(apiKey) {
